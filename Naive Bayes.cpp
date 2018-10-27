@@ -52,13 +52,13 @@ main() {
 
     Charging_State.pb("Charging");Charging_State.pb("Complete");Charging_State.pb("Not Connected");
 
-    Profile.pb("Silent"); Profile.pb("General"); Profile.pb("Aeroplane");Profile.pb("Meeting");Profile.pb("Outdoor");
+    Profile.pb("Silent"); Profile.pb("General"); Profile.pb("Aeroplane");Profile.pb("Meeting");Profile.pb("Outdoor"), Profile.pb("Vibration");
 
     Mood.pb("Happy"); Mood.pb("Sad"); Mood.pb("Normal");
 
     Activity.pb("Facebook");Activity.pb("Instagram");Activity.pb("Youtube");Activity.pb("Browsing");Activity.pb("Skype");
     Activity.pb("Whatsapp");Activity.pb("Games");Activity.pb("Music");Activity.pb("Movie");Activity.pb("Live Sports");
-    Activity.pb("Gmail");Activity.pb("Linkedin");Activity.pb("Read News");
+    Activity.pb("Gmail");Activity.pb("LinkedIn");Activity.pb("Read News");
 
     Wifi.pb("ON"); Wifi.pb("OFF");
 
@@ -139,12 +139,12 @@ main() {
     fl( i, 0, Day.size() ) {
         fl( j, 0, Activity.size() ) {
             int c = 0, coun = count(ActivityData.begin(), ActivityData.end(), Activity[j]);
-            fl( k, 0, Activity.size()) {
+            fl( k, 0, ActivityData.size()) {
                 if( DayData[k] == Day[i] && ActivityData[k] == Activity[j]) {
                     c++;
                 }
             }
-            if( c == 0 || coun == 0)  { c++; coun++;}
+            if( c == 0 && coun != 0)  { c++; coun = Activity.size()+1; }
             Prob[mp(Day[i], Activity[j])] = (double)c/(double)coun;
         }
     }
@@ -153,12 +153,12 @@ main() {
     fl( i, 0, Time.size() ) {
         fl( j, 0, Activity.size() ) {
             int c = 0, coun = count(ActivityData.begin(), ActivityData.end(), Activity[j]);
-            fl( k, 0, Activity.size()) {
+            fl( k, 0, ActivityData.size()) {
                 if( TimeData[k] == Time[i] && ActivityData[k] == Activity[j]) {
                     c++;
                 }
             }
-            if( c == 0 || coun == 0)  { c++; coun++;}
+            if( c == 0 && coun != 0)  { c++; coun = Activity.size()+1; }
             Prob[mp(Time[i], Activity[j])] = (double)c/(double)coun;
         }
     }
@@ -167,12 +167,12 @@ main() {
     fl( i, 0, Holiday.size() ) {
         fl( j, 0, Activity.size() ) {
             int c = 0, coun = count(ActivityData.begin(), ActivityData.end(), Activity[j]);
-            fl( k, 0, Activity.size()) {
+            fl( k, 0, ActivityData.size()) {
                 if( HolidayData[k] == Holiday[i] && ActivityData[k] == Activity[j]) {
                     c++;
                 }
             }
-            if( c == 0 || coun == 0)  { c++; coun++;}
+            if( c == 0 && coun != 0)  { c++; coun = Activity.size()+1; }
             Prob[mp(Holiday[i], Activity[j])] = (double)c/(double)coun;
         }
     }
@@ -181,12 +181,12 @@ main() {
     fl( i, 0, Location.size() ) {
         fl( j, 0, Activity.size() ) {
             int c = 0, coun = count(ActivityData.begin(), ActivityData.end(), Activity[j]);
-            fl( k, 0, Activity.size()) {
+            fl( k, 0, ActivityData.size()) {
                 if( LocationData[k] == Location[i] && ActivityData[k] == Activity[j]) {
                     c++;
                 }
             }
-            if( c == 0 || coun == 0)  { c++; coun++;}
+            if( c == 0 && coun != 0)  { c++; coun = Activity.size()+1; }
             Prob[mp(Location[i], Activity[j])] = (double)c/(double)coun;
         }
     }
@@ -195,12 +195,12 @@ main() {
     fl( i, 0, Wifi.size() ) {
         fl( j, 0, Activity.size() ) {
             int c = 0, coun = count(ActivityData.begin(), ActivityData.end(), Activity[j]);
-            fl( k, 0, Activity.size()) {
+            fl( k, 0, ActivityData.size()) {
                 if( WifiData[k] == Wifi[i] && ActivityData[k] == Activity[j]) {
                     c++;
                 }
             }
-            if( c == 0 || coun == 0)  { c++; coun++;}
+            if( c == 0 && coun != 0)  { c++; coun = Activity.size()+1; }
             Prob[mp(Wifi[i], Activity[j])] = (double)c/(double)coun;
         }
     }
@@ -209,12 +209,12 @@ main() {
     fl( i, 0, Charging_State.size() ) {
         fl( j, 0, Activity.size() ) {
             int c = 0, coun = count(ActivityData.begin(), ActivityData.end(), Activity[j]);
-            fl( k, 0, Activity.size()) {
+            fl( k, 0, ActivityData.size()) {
                 if( Charging_StateData[k] == Charging_State[i] && ActivityData[k] == Activity[j]) {
                     c++;
                 }
             }//cout<<c<<" "<<coun<<endl;
-            if( c == 0 || coun == 0)  { c++; coun++;}
+            if( c == 0 && coun != 0)  { c++; coun = Activity.size()+1; }
             Prob[mp(Charging_State[i], Activity[j])] = (double)c/(double)coun;
         }
     }
@@ -223,12 +223,12 @@ main() {
     fl( i, 0, Profile.size() ) {
         fl( j, 0, Activity.size() ) {
             int c = 0, coun = count(ActivityData.begin(), ActivityData.end(), Activity[j]);
-            fl( k, 0, Activity.size()) {
+            fl( k, 0, ActivityData.size()) {
                 if( ProfileData[k] == Profile[i] && ActivityData[k] == Activity[j]) {
                     c++;
                 }
             }
-            if( c == 0 || coun == 0)  { c++; coun++;}
+            if( c == 0 && coun != 0)  { c++; coun = Activity.size()+1; }
             Prob[mp(Profile[i], Activity[j])] = (double)c/(double)coun;
         }
     }
@@ -237,12 +237,12 @@ main() {
     fl( i, 0, Mood.size() ) {
         fl( j, 0, Activity.size() ) {
             int c = 0, coun = count(ActivityData.begin(), ActivityData.end(), Activity[j]);
-            fl( k, 0, Activity.size()) {
+            fl( k, 0, ActivityData.size()) {
                 if( MoodData[k] == Mood[i] && ActivityData[k] == Activity[j]) {
                     c++;
                 }
             }
-            if( c == 0 || coun == 0)  { c++; coun++;}
+            if( c == 0 && coun != 0)  { c++; coun = Activity.size()+1; }
             Prob[mp(Mood[i], Activity[j])] = (double)c/(double)coun;
         }
     }
@@ -250,26 +250,86 @@ main() {
     cout<<"\t\t\tNaive Bayes Algorithm\n";
     f( i, 1 , 80 ) cout<<"=";
     cout<<"\nEnter Query : ";
-    string input[12]; f( i, 1, 8 ) cin >> input[i];
+    string input[10], inpstr; getline(cin, inpstr);
+    fl( i, 0, Day.size() ) {
+        if(check_subs(inpstr, Day[i])) {
+            input[1] = Day[i];
+            break;
+        }
+    }
+    fl( i, 0, Time.size() ) {
+        if(check_subs(inpstr, Time[i])) {
+            input[2] = Time[i];
+            break;
+        }
+    }
+    fl( i, 0, Holiday.size() ) {
+        if(check_subs(inpstr, Holiday[i])) {
+            input[3] = Holiday[i];
+            break;
+        }
+    }
+    fl( i, 0, Location.size() ) {
+        if(check_subs(inpstr, Location[i])) {
+            input[4] = Location[i];
+            break;
+        }
+    }
+    fl( i, 0, Wifi.size() ) {
+        if(check_subs(inpstr, Wifi[i])) {
+            input[5] = Wifi[i];
+            break;
+        }
+    }
+    fl( i, 0, Charging_State.size() ) {
+        if(check_subs(inpstr, Charging_State[i])) {
+            input[6] = Charging_State[i];
+            break;
+        }
+    }
+    fl( i, 0, Profile.size() ) {
+        if(check_subs(inpstr, Profile[i])) {
+            input[7] = Profile[i];
+            break;
+        }
+    }
+    fl( i, 0, Mood.size() ) {
+        if(check_subs(inpstr, Mood[i])) {
+            input[8] = Mood[i];
+            break;
+        }
+    }
+
 
     double prob = 0.0; string ans;
     fl( i, 0, Activity.size() ) {
         double k = 1.0;
-        f( j, 1, 8 ) {// cout<<Prob[mp(Activity[i],"Home")]<<" "<< input[j]<<" ";
-             k *= Prob[mp(input[j], Activity[i])];
+        f( j, 1, 8 ) { cout<<Activity[i]<<" "<<input[j]<<endl;
+            if(Prob[mp(input[j], Activity[i])] == 0.0)
+                continue;
+             k = k * Prob[mp(input[j], Activity[i])];
+             cout<<k<<endl;
         }
-        if( k > prob ) {
-            k = prob;
+        //cout<<k<<endl;
+        if( k >= prob /*&& k != 1*/ ) {
+            prob = k;
             ans = Activity[i];
         }
 
     }
 
+
+    //cout<<ProfileData.size();
     cout << endl<<"The Result is : "<<ans<<endl;
+
+    //cout<<Charging_State.size()<<" "<<count(Charging_State.begin(), Charging_State.end(), "Not Connected");
+
 
 
 }
 /*
 Fri 8.00-9.00 Yes Home General Happy OFF Charging
-
+Tue 9.00-10.00 No Canteen Normal OFF General Charging
+Fri Yes Home 13.00-14.00 OFF Charging Normal General
+Sat Yes Home 13.00-14.00 ON Not Connected Normal Silent
 */
